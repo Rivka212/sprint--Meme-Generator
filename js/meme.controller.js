@@ -13,8 +13,12 @@ function onInit() {
 }
 
 
+
 function renderMeme() {
     const meme = getMeme()
+    const { lines } = meme
+    const [{ txt, size, color }] = lines
+
     const img = new Image()
     img.src = 'imgs/1.jpg'
 
@@ -23,10 +27,10 @@ function renderMeme() {
 
         // gCtx.lineWidth = 1
         // gCtx.strokeStyle = 'black'
-        gCtx.fillStyle = meme.lines[0].color
-        gCtx.font = meme.lines[0].size+'px Arial'
+        gCtx.fillStyle = color
+        gCtx.font = size + 'px Arial'
 
-        gCtx.fillText(meme.lines[0].txt, 50, 50)
+        gCtx.fillText(txt, 50, 50)
         // gCtx.strokeText(gMeme.lines[0].txt, 50, 50)
     }
 }
