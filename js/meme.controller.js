@@ -5,40 +5,31 @@ let gCtx
 
 
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
-
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'Add Text Here',
-            size: 20,
-            color: 'red'
-        }
-    ]
-}
-
-
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-
-
-
-
 function onInit() {
     gElCanvas = document.querySelector('canvas')
-	gCtx = gElCanvas.getContext('2d')
+    gCtx = gElCanvas.getContext('2d')
+    renderMeme()
 
 }
 
 
 function renderMeme() {
+    const meme = getMeme()
     const img = new Image()
     img.src = 'imgs/1.jpg'
 
-    img.onload = () => 
-    gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
-} 
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
+
+        // gCtx.lineWidth = 1
+        // gCtx.strokeStyle = 'black'
+        gCtx.fillStyle = meme.lines[0].color
+        gCtx.font = meme.lines[0].size+'px Arial'
+
+        gCtx.fillText(meme.lines[0].txt, 50, 50)
+        // gCtx.strokeText(gMeme.lines[0].txt, 50, 50)
+    }
+}
 
 
 
