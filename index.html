@@ -15,15 +15,21 @@
     <section class="image-gallery"></section>
 
     <section class="meme-editor">
-        <canvas width="400" height="400"></canvas>
-
-        <div class="actions"></div>
+        <canvas width="400" height="400">
+        </canvas>
+        
+        <div class="actions">
+            <label for="txt-meme"></label>
+            <input type="text" class="txt-meme" name="txt-meme" onkeyup="setLineTxt()" value="" placeholder="Add text here">
+        </div>
     </section>
+    
 
     <footer></footer>
 
     <script src="js/services/meme.service.js"></script>
 
+    <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/main.js"></script>
 </body>
