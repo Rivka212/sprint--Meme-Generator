@@ -49,3 +49,7 @@ img{
     height: 15em;
     border-radius: .5em;
 }
+
+.hidden{
+    display: none;
+}

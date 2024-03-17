@@ -20,6 +20,12 @@ function renderGallery() {
 
 
 function onImgSelect(imgId) {
+    const elGallery = document.querySelector('.images-gallery')
+    elGallery.classList.add('hidden')
+
+    const elimgMeme = document.querySelector('.meme-editor')
+    elimgMeme.classList.remove('hidden')
+
     setImg(imgId)
     renderMeme()
 }
