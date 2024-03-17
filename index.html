@@ -23,16 +23,23 @@
 
     <section class="images-gallery"></section>
 
-    <section class="meme-editor hidden">
+    <section class="meme-container hidden">
         <canvas width="400" height="400">
         </canvas>
-        
-        <div class="actions">
-            <label for="txt-meme"></label>
-            <input type="text" class="txt-meme" name="txt-meme" onkeyup="setLineTxt()" value="" placeholder="Add text here">
+        <div class="main-editor">
+            <section class="meme-editor">
+                <label for="txt-meme"></label>
+                <input type="text" class="txt-meme" name="txt-meme" onkeyup="setLineTxt()" value=""
+                    placeholder="Add text here">
+            </section>
+            <section class="actions">
+                <button onclick="onSave()">Save</button>
+                <button onclick="onShare()">Share</button>
+                <button href="#" onclick="downloadMeme(this)" download="file-name">Download</a></button>
+            </section>
         </div>
     </section>
-    
+
 
     <footer></footer>
 
