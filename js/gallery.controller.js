@@ -4,7 +4,7 @@
 
 function renderGallery() {
     var images = gImgs
-    console.log(images);
+    // console.log(images);
     const elImages = document.querySelector('.images-gallery')
 
     const strHTML = images.map(img => {
@@ -23,7 +23,7 @@ function onImgSelect(imgId) {
     const elGallery = document.querySelector('.images-gallery')
     elGallery.classList.add('hidden')
 
-    const elimgMeme = document.querySelector('.meme-editor')
+    const elimgMeme = document.querySelector('.meme-container')
     elimgMeme.classList.remove('hidden')
 
     setImg(imgId)
