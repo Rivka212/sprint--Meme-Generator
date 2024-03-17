@@ -28,3 +28,17 @@ function downloadMeme(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
 }
+
+function onChangeColor() {
+    const { lines } = gMeme
+    const [{ color }] = lines
+
+    var newColor = document.createElement('INPUT')
+    newColor.setAttribute('type', 'color')
+    document.body.appendChild(newColor)
+
+    color = newColor
+}
+
+
+
