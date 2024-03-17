@@ -1,7 +1,9 @@
 'use strict'
 
 
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
+ var gImg = { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }
+
+var gImgs = creatImgs()
 
 var gMeme = {
     selectedImgId: 5,
@@ -22,8 +24,42 @@ function getMeme() {
     return gMeme
 }
 
-function setLineTxt(){
+
+function setLineTxt() {
     const text = document.querySelector('[name="txt-meme"]').value
     gMeme.lines[0].txt = text
-renderMeme()
+    renderMeme()
 }
+
+
+function creatImgs() {
+    const images = []
+    for (let i = 0; i < 2; i++) {
+        images.push(
+            creatImg(
+                i + 1, `imgs/${i + 1}.jpg`,
+                ` ['funny', 'cat'] `
+            )
+        )
+    }
+    return images
+}
+
+
+function setImg(imgId) {
+    const img = gImgs.find(img => img.id === imgId)
+    gImg = img
+
+    console.log(gImg);
+}
+
+
+
+function creatImg(id, url, keywords) {
+    return {
+        id,
+        url,
+        keywords,
+    }
+}
+
