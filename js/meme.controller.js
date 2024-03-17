@@ -22,3 +22,9 @@ function renderMeme() {
     }
 }
 
+
+function downloadMeme(elLink) {
+    elLink.download = 'my-meme'
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+}
