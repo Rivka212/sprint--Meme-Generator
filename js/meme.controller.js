@@ -3,6 +3,7 @@
 let gElCanvas
 let gCtx
 let gCurrLine = false
+let gCuurLineIdx = 0
 
 
 function renderMeme() {
@@ -27,16 +28,20 @@ function renderMeme() {
 
         if (gCurrLine) {
             onAddFrame(txt)
-            // const textWidth = gCtx.measureText(txt).width
-            // const x = 50
-            // const y = 50
-            // const padding = 10
-
-            // gCtx.fillText(txt, x, y)
-            // gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
         }
     }
 }
+
+// function onAddDemoText(){
+//     gCtx.fillStyle = color
+//             gCtx.font = size + 'px Arial'
+
+//             gCtx.fillText(txt, 50 + space, 50 + space)
+//             space += 35
+// }
+
+
+
 
 function onAddFrame(text){
     const textWidth = gCtx.measureText(text).width
@@ -54,15 +59,8 @@ function onAddFrame(text){
 function onSetLineTxt() {
     gCurrLine = true
     const text = document.querySelector('[name="txt-meme"]').value
-    // const textWidth = gCtx.measureText(text).width
-    // const x = 50
-    // const y = 50
-    // const padding = 10
-
-    // gCtx.fillText(text, x, y)
-    // gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
+    console.log(text);
     setLineTxt(text)
-
     renderMeme()
 }
 
@@ -106,6 +104,8 @@ function onChangeFontSize(elSize) {
 
 function onAddLines() {
     gCurrLine = true
+    gCuurLineIdx++
+    console.log(gCuurLineIdx); 
     const { lines } = gMeme
     var line = {
         txt: 'Add Text Here',

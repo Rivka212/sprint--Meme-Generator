@@ -11,11 +11,12 @@ var gMemes = []
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ 
+    lines: [{
         txt: 'Add Text Here',
         size: 30,
-        color: 'black' 
-        }] 
+        color: 'black',
+        location: {x:50, y:50}
+        }]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -56,15 +57,18 @@ function getMeme() {
 }
 
 
-function setLineTxt() {
-    // const text = document.querySelector('[name="txt-meme"]').value
-    gMeme.lines[0].txt = text
+function setLineTxt(text) {
+    var { selectedLineIdx } = gMeme
+     selectedLineIdx = gCuurLineIdx 
+     console.log(selectedLineIdx);
+    // if(g gMemes.selectedLineIdx)
+    gMeme.lines[selectedLineIdx].txt = text
 }
 
 
 function createImgs() {
     const images = []
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 17; i++) {
         images.push(
             createImg(
                 i + 1, `imgs/${i + 1}.jpg`,
