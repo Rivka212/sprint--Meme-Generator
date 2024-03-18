@@ -50,7 +50,7 @@ input {
     background-color: rgb(175, 160, 160);
 }
 
-img {
+canvas img {
     height: 15em;
     width: 100%;
     border-radius: .5em;
@@ -140,7 +140,7 @@ img {
 }
 
 .actions button {
-     width: 6.5em;
+     width: 8em;
      padding: .6em;
      font-size: 1em;
     border-radius: 5px;
@@ -164,4 +164,19 @@ img {
     border-radius: 10px;
     /* padding: 1em; */
 
+}
+
+.meme-editor button{
+    height: 3em;
+    width: 3em;
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: rgb(198, 193, 203);
+
+}
+
+.imgFont{
+    height: 1em;
+    width: 100%;
+    border-radius: .5em;
 }
