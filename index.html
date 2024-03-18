@@ -53,19 +53,18 @@
                         <option value="Courier new">Courier new</option>
                         <option value="Poppins">Poppins</option>
                     </select>
-                       
-                    <button><i class="fa-solid fa-brush"></i></button>
+
+                    <!-- <button><i class="fa-solid fa-brush"></i></button> -->
                     <button><i class="fa-solid fa-paintbrush"></i></button>
-                    <button class="newColor" onclick="onSetColor()"></button>  
-                    <input type="color" class="colorPicker" style="display: none;" value="#ff8977">
-                </div>
-                <!-- <div class="selectedColor"></div> -->
+                    <input type="color" id="colorPicker" class="hidden" onchange="showColor()">
+                    <button onclick="onSetColor()"><i class="fa-solid fa-brush"></i></button>
+
             </section>
             <section class="actions">
                 <button onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i>Save</button>
                 <button onclick="onShare()"><i class="fa-solid fa-share"></i>Share</button>
-                <button href="#" onclick="downloadMeme(this)" type="button" download="file-name"><i
-                        class="fa-solid fa-download"></i>Download</a></button>
+                <a href="#" onclick="downloadMeme(this)"><button><i
+                            class="fa-solid fa-download"></i>Download</button></a>
             </section>
         </div>
     </section>
