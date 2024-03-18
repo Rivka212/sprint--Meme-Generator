@@ -12,7 +12,6 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{ 
-        id:1,
         txt: 'Add Text Here',
         size: 30,
         color: 'black' 
@@ -58,7 +57,7 @@ function getMeme() {
 
 
 function setLineTxt() {
-    const text = document.querySelector('[name="txt-meme"]').value
+    // const text = document.querySelector('[name="txt-meme"]').value
     gMeme.lines[0].txt = text
 }
 

@@ -30,6 +30,7 @@ input {
     width: 13em;
     height: 2.5em;
     margin-inline-start: .7em;
+    margin-bottom: .5em;
     font-size: 1.3em;
     text-align: center;
     border-radius: .5em;
@@ -142,6 +143,7 @@ canvas img {
 .actions button {
      width: 8em;
      padding: .6em;
+
      font-size: 1em;
     border-radius: 5px;
 }
@@ -169,6 +171,7 @@ canvas img {
 .meme-editor button{
     height: 3em;
     width: 3em;
+
     border-radius: 10px;
     font-size: 1em;
     background-color: rgb(198, 193, 203);
@@ -179,4 +182,13 @@ canvas img {
     height: 1em;
     width: 100%;
     border-radius: .5em;
+}
+
+
+.main-btn{
+display: flex;
+justify-content: center;
+align-content: center;
+margin-bottom: 4em;
+gap: 5px;
 }

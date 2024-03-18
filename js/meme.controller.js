@@ -22,12 +22,11 @@ function renderMeme() {
             gCtx.font = size + 'px Arial'
 
             gCtx.fillText(txt, 50 + space, 50 + space)
-            space += 25
+            space += 35
         }
 
         if (gCurrLine) {
-            // gCtx.lineWidth = 2
-            // gCtx.strokeRect(45, 20, 200, 45)
+
             const textWidth = gCtx.measureText(txt).width
             const x = 50
             const y = 50
@@ -42,13 +41,24 @@ function renderMeme() {
 
 
 
-function onSetLineTxt(txt) {
+function onSetLineTxt() {
     gCurrLine = true
-    console.log(txt)
-    setLineTxt()
+    // console.log(txt)
+    const text = document.querySelector('[name="txt-meme"]').value
+console.log(text);
+    setLineTxt(text)
 
     renderMeme()
 }
+
+function changeFontFamily() {
+    var fontSelect = document.querySelector('fontSelect').value
+    document.getElementById('textToChange').style.fontFamily = fontSelect
+}
+
+
+
+
 
 
 
@@ -95,13 +105,14 @@ function onChangeFontSize(elSize) {
 
 function onAddLines() {
     const { lines } = gMeme
-    var line =
-    {
+    var line = {
         txt: 'Add Text Here',
         size: 30,
         color: 'black'
     }
     lines.push(line)
+
+    gMeme.selectedLineIdx++
     renderMeme()
 }
 
