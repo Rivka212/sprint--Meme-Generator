@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/87970432fa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <title>Meme Generator</title>
 </head>
@@ -29,21 +30,34 @@
         <div class="main-editor">
             <section class="meme-editor">
                 <label for="txt-meme"></label>
-                <input type="text" class="txt-meme" name="txt-meme" onkeyup="setLineTxt()" value=""
+                <input type="text" class="txt-meme" name="txt-meme" onkeyup="onSetLineTxt()" value=""
                     placeholder="Add text here">
-                <button class="newColor" onclick="onChangeColor()"></button>
+                <div>
+                    <button onclick="onSwitchLine()"><i class="fa-solid fa-arrow-up fa-arrow-down"></i></button>
+                    <button onclick="onAddLines()"><i class="fa-solid fa-plus"></i></button>
+                    <button><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <button><i class="fa-solid fa-brush"></i></button>
+                <button><i class="fa-solid fa-paintbrush"></i></button>
+                <button onclick="onChangeFontSize('increase')">A+</button>
+                <button onclick="onChangeFontSize('decrease')">A-</button>
+                <button class="newColor" onclick="onSetColor()"></button>
+                <input type="color" class="colorPicker" style="display: none;" value="#ff8977">
+                <div class="selectedColor"></div>
             </section>
             <section class="actions">
-                <button onclick="onSave()">Save</button>
-                <button onclick="onShare()">Share</button>
-                <button href="#" onclick="downloadMeme(this)" download="file-name">Download</a></button>
+                <button onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i>Save</button>
+                <button onclick="onShare()"><i class="fa-solid fa-share"></i>Share</button>
+                <button href="#" onclick="downloadMeme(this)" type="button" download="file-name"><i
+                        class="fa-solid fa-download"></i>Download</a></button>
             </section>
         </div>
     </section>
 
-
     <footer></footer>
 
+    <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>
 
     <script src="js/gallery.controller.js"></script>
