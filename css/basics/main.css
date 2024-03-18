@@ -192,3 +192,8 @@ align-content: center;
 margin-bottom: 4em;
 gap: 5px;
 }
+
+
+.hidden {
+    display: none;
+}
