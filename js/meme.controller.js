@@ -26,16 +26,26 @@ function renderMeme() {
         }
 
         if (gCurrLine) {
+            onAddFrame(txt)
+            // const textWidth = gCtx.measureText(txt).width
+            // const x = 50
+            // const y = 50
+            // const padding = 10
 
-            const textWidth = gCtx.measureText(txt).width
-            const x = 50
-            const y = 50
-            const padding = 10
-
-            gCtx.fillText(txt, x, y)
-            gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
+            // gCtx.fillText(txt, x, y)
+            // gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
         }
     }
+}
+
+function onAddFrame(text){
+    const textWidth = gCtx.measureText(text).width
+    const x = 50
+    const y = 50
+    const padding = 10
+
+    gCtx.fillText(text, x, y)
+    gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
 }
 
 
@@ -43,9 +53,14 @@ function renderMeme() {
 
 function onSetLineTxt() {
     gCurrLine = true
-    // console.log(txt)
     const text = document.querySelector('[name="txt-meme"]').value
-console.log(text);
+    // const textWidth = gCtx.measureText(text).width
+    // const x = 50
+    // const y = 50
+    // const padding = 10
+
+    // gCtx.fillText(text, x, y)
+    // gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
     setLineTxt(text)
 
     renderMeme()
@@ -58,11 +73,6 @@ function changeFontFamily() {
 
 
 
-
-
-
-
-
 function downloadMeme(elLink) {
     elLink.download = 'my-meme'
     const dataUrl = gElCanvas.toDataURL()
@@ -70,24 +80,15 @@ function downloadMeme(elLink) {
 }
 
 function onSetColor() {
-    const { lines } = gMeme
-    const [{ color }] = lines
+    document.getElementById('colorPicker').click()
+    // const newColor = document.getElementById('colorPicker').value
+}
 
-    // const elColorPicker = document.querySelector('colorPicker')
-    // elColorPicker.style.remove('hidden')
-    // style = "display: none;"
-
-    var selectedColor = document.querySelector('selectedColor')
-    selectedColor.style.backgroundColor = this.value
-    console.log(this.value);
-    selectedColor.innerText = color + this.value
-
-
-    // var newColor = document.createElement('INPUT')
-    // newColor.setAttribute('type', 'color')
-    // document.body.appendChild(newColor)
-
-    color = newColor
+function showColor() {
+    // document.getElementById('colorPicker').click()
+    var newColor = document.getElementById('colorPicker').value
+    gMeme.lines[0].color = newColor
+    renderMeme()
 }
 
 
@@ -104,6 +105,7 @@ function onChangeFontSize(elSize) {
 
 
 function onAddLines() {
+    gCurrLine = true
     const { lines } = gMeme
     var line = {
         txt: 'Add Text Here',
@@ -111,20 +113,22 @@ function onAddLines() {
         color: 'black'
     }
     lines.push(line)
-
+console.log(lines);
     gMeme.selectedLineIdx++
+    console.log(gMeme.selectedLineIdx);
+    // onAddFrame()
     renderMeme()
 }
 
 
 function onSwitchLine() {
-    const { lines } = gMeme
-    for (let i = 0; i < lines.length; i++) {
-        lines[i] = 1
-    }
+    gCurrLine = true
+    const {selectedLineIdx } = gMeme
+    if(selectedLineIdx)
+   
+    gMeme.selectedLineIdx
+    // gCtx.lineWidth = 2
+    // gCtx.strokeRect(45, 20, 200, 45)
 
-    gCtx.lineWidth = 2
-    gCtx.strokeRect(45, 20, 200, 45)
-
-    renderMeme()
+    // renderMeme()
 }
