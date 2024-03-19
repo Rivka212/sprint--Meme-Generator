@@ -13,6 +13,14 @@ body {
 
 }
 
+/* .canvas-container {
+    width: 40vw;
+    background-color: rgb(80, 55, 114);
+    /* border: 1px solid rgb(48, 46, 46); */
+    /* margin: 10px auto; */
+/* } */
+ 
+
 
 canvas {
     border-radius: .5em;
@@ -136,7 +144,7 @@ canvas img {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 34em;
+    width: 30em;
     background-color: rgb(108, 94, 121);
     gap: 1em;
     padding: 1em;
