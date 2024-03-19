@@ -7,7 +7,6 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: rgb(65, 65, 82);
-    /* font-family:Arial, Helvetica, sans-serif; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font: bold;
     gap: 10px;
@@ -27,7 +26,7 @@ canvas {
 }
 
 input {
-    width: 13em;
+    width: 15em;
     height: 2.5em;
     margin-inline-start: .7em;
     margin-bottom: .5em;
@@ -40,16 +39,6 @@ input {
 }
 
 
-.images-gallery {
-    display: flex;
-    /* flex-wrap: wrap; */
-    gap: 10px;
-    padding: 10px;
-    border-radius: .5em;
-    margin-top: 6em;
-
-    background-color: rgb(175, 160, 160);
-}
 
 canvas img {
     height: 15em;
@@ -73,29 +62,23 @@ canvas img {
     justify-content: space-between;
 
     height: 100px;
-    width: 100vw;
-    padding-inline: 1em;
-    /* flex-grow: 1; */
+    width: 96vw;
+    margin: 10px;
+    padding: 10px;
+   
     background-color: rgb(125, 108, 142);
     border-radius: .5em;
 }
 
 .main-header a {
     text-decoration: none;
-    margin-inline-end: 2em;
     color: black;
 
 }
 
-.main-nav li:not(:last-of-type) {
-    margin-inline-end: 4em;
+.main-nav li{
+    margin-inline-end: 2em;
 }
-
-/* 
-.main-nav a:(:first-child) {
-    padding: 0;
-} */
-
 
 
 
@@ -110,7 +93,7 @@ canvas img {
 
 .nav-list {
     display: flex;
-    margin-inline: 2em;
+    /* margin-inline: 2em; */
 }
 
 
@@ -123,15 +106,15 @@ canvas img {
 
 .logo {
     font-size: 1.4em;
-    padding: 2em;
+    padding: 1em;
 }
 
 
 .meme-container {
     display: flex;
     flex-direction: row;
-    margin-top: 6em;
-    gap: 2em;
+    margin-top: 3em;
+    gap: 2.5em;
 }
 
 .actions {
@@ -153,7 +136,7 @@ canvas img {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 40%;
+    width: 34em;
     background-color: rgb(108, 94, 121);
     gap: 1em;
     padding: 1em;
