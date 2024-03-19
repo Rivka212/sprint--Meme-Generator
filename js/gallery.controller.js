@@ -44,29 +44,3 @@ function coverCanvasWithImg(elImg) {
 
 
 
-// canvas id="myCanvas" width="400" height="200" style="border:1px solid black;"></canvas><br>
-//     <input type="text" id="textInput"><br>
-  
-//         var texts = {
-//             text1: "Hello, World!",
-//             text2: "This is text 2"
-//         };
-
-//         function drawText(text) {
-//             ctx.clearRect(0, 0, canvas.width, canvas.height);
-//             ctx.font = '20px Arial';
-//             ctx.fillText(texts[text], 50, 100);
-//         }
-
-//         function addText() {
-//             texts.text2 = document.getElementById('textInput').value;
-//             drawText('text2');
-//         }
-
-//         function changeText() {
-//             texts.text1 = "New Text";
-//             drawText('text1');
-//         }
-
-//         drawText('text1');
- 

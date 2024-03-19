@@ -60,7 +60,7 @@ function getMeme() {
 function setLineTxt(text) {
     var { selectedLineIdx } = gMeme
      selectedLineIdx = gCuurLineIdx 
-     console.log(selectedLineIdx);
+    //  console.log(s);
     // if(g gMemes.selectedLineIdx)
     gMeme.lines[selectedLineIdx].txt = text
 }
@@ -81,6 +81,7 @@ function createImgs() {
 
 
 function setImg(imgId) {
+    console.log();
     const img = gImgs.find(img => img.id === imgId)
     gImg = img
 }

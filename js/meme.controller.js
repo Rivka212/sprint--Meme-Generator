@@ -26,13 +26,9 @@ function renderMeme() {
 
             gCtx.fillText(txt, 50 + space, 50 + space)
             space += 35
-        }
-
-        if (gCurrLine) {
             onAddFrame(txt)
-        }
-    }
-   
+         }
+    }  
     // window.addEventListener('resize', () => resizeCanvas())
 }
 
@@ -48,23 +44,28 @@ function renderMeme() {
 
 
 function onAddFrame(text){
-    const textWidth = gCtx.measureText(text).width
-    const x = 50
-    const y = 50
-    const padding = 10
 
+    var cuurSpace = 35
+   var space = gCuurLineIdx * cuurSpace
+    const textWidth = gCtx.measureText(text).width
+    const x = 50 + space
+    const y = 50 + space
+    const padding = 10
+    // gCtx.fillText(txt, 50 + space, 50 + space)
+    // space += 35
     gCtx.fillText(text, x, y)
     gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
+    renderMeme()
 }
-
-
 
 
 function onSetLineTxt() {
     gCurrLine = true
+    
     const text = document.querySelector('[name="txt-meme"]').value
     console.log(text);
     setLineTxt(text)
+    text = ''
     renderMeme()
 }
 
@@ -120,13 +121,15 @@ function onAddLines() {
 console.log(lines);
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
-    // onAddFrame()
-    renderMeme()
+    onAddFrame(line.txt)
+    // renderMeme()
 }
 
 
 function onSwitchLine() {
     gCurrLine = true
+    // gCuurLineIdx = (gCuurLineIdx === gCurrMeme.lines.length - 1)?
+    // 0: gCuurLineIdx + 1
     const {selectedLineIdx } = gMeme
     if(selectedLineIdx)
    
@@ -136,3 +139,7 @@ function onSwitchLine() {
 
     // renderMeme()
 }
+
+
+
+ 
