@@ -5,8 +5,17 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     // renderMeme()
-    renderGallery()
 
-    // var img = document.querySelector('.images-gallery')
-    // img.addEventListener('click', onImgSelect)
+    // addListeners()
+    // resizeCanvas()
+
+    renderGallery()
+    // window.addEventListener('resize', () => resizeCanvas())
+
 }
+
+
+// function resizeCanvas() {
+//     const elContainer = document.querySelector('.canvas-container')
+//         gElCanvas.width = elContainer.clientWidth
+// }
