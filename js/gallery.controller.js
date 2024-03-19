@@ -12,10 +12,6 @@ function renderGallery() {
     })
 
     elImages.innerHTML = strHTML.join('')
-    // var image = document.querySelector('.images-gallery img')
-    // // var image = document.getElementById('id')
-    // console.log(image);
-    // image.addEventListener('click', onImgSelect)
 }
 
 
