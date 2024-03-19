@@ -11,12 +11,14 @@ function renderMeme() {
     const { lines } = meme
     const [{ txt, size, color }] = lines
     var space = 0
+    // resizeCanvas()
 
     const img = new Image()
     img.src = gImg.url
 
     img.onload = () => {
-        gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
+        coverCanvasWithImg(img)
+        // gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
 
         for (let i = 0; i < lines.length; i++) {
             gCtx.fillStyle = color
@@ -30,6 +32,8 @@ function renderMeme() {
             onAddFrame(txt)
         }
     }
+   
+    // window.addEventListener('resize', () => resizeCanvas())
 }
 
 // function onAddDemoText(){
