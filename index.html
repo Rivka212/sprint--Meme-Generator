@@ -42,13 +42,16 @@
                     <div>
                         <button onclick="onChangeFontSize('increase')">A+</button>
                         <button onclick="onChangeFontSize('decrease')">A-</button>
-                        <button><i class="fa-solid fa-align-left"></i></button>
-                        <button><i class="fa-solid fa-align-center"></i></button>
-                        <button><i class="fa-solid fa-align-right"></i></button>
+                        <button onclick="onAlignText('left')"><i class="fa-solid fa-align-left"></i></button>
+                        <button onclick="onAlignText('center')"><i class="fa-solid fa-align-center"></i></button>
+                        <button onclick="onAlignText('right')"><i class="fa-solid fa-align-right"></i></button>
                     </div>
                     <div>
+
+                        <!-- <select id="input-font" class="input"  onchange="changeFont (this);"> -->
+                           
                         <label for="fontSelect"></label>
-                        <select class="fontSelect" onChange="changeFontFamily()">
+                        <select class="fontSelect" onchange="onChangeFont(this.value)">
                             <option value="Arial">Arial</option>
                             <option value="Verdana">Verdana</option>
                             <option value="Georgia">Georgia</option>
