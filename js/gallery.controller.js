@@ -28,7 +28,7 @@ function onImgSelect(elImg, imgId) {
 
     setImg(imgId)
     // coverCanvasWithImg(elImg)
-    renderMeme()
+    onloadCanvas()
 }
 
 // function onSelectImg(elImg) {

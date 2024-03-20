@@ -15,7 +15,7 @@ function onInit() {
 }
 
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container')
-//         gElCanvas.width = elContainer.clientWidth
-// }
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+        gElCanvas.width = elContainer.clientWidth
+}
