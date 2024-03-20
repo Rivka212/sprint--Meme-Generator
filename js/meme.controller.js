@@ -18,35 +18,34 @@ function renderMeme() {
 
     img.onload = () => {
         coverCanvasWithImg(img)
-        // gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
+    }
+    // gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
+    // onAddDemoText()
+    for (let i = 0; i < lines.length; i++) {
+        gCtx.fillStyle = color
+        gCtx.font = size + 'px Arial'
 
-        for (let i = 0; i < lines.length; i++) {
-            gCtx.fillStyle = color
-            gCtx.font = size + 'px Arial'
-
-            gCtx.fillText(txt, 50 + space, 50 + space)
-            space += 35
-            onAddFrame(txt)
-         }
-    }  
+        gCtx.fillText(txt, 50 + space, 50 + space)
+        space += 35
+    } 
+    // onAddFrame(txt)
     // window.addEventListener('resize', () => resizeCanvas())
 }
 
-// function onAddDemoText(){
+// function onAddDemoText() {
+//     var space = 0
+//     var cuurSpace = 35
+//     var space = gCuurLineIdx * cuurSpace
 //     gCtx.fillStyle = color
-//             gCtx.font = size + 'px Arial'
-
-//             gCtx.fillText(txt, 50 + space, 50 + space)
-//             space += 35
+//     gCtx.font = size + 'px Arial'
+//     gCtx.fillText(txt, 50 + space, 50 + space)
+//     space += 35
 // }
 
 
-
-
-function onAddFrame(text){
-
+function onAddFrame(text) {
     var cuurSpace = 35
-   var space = gCuurLineIdx * cuurSpace
+    var space = gCuurLineIdx * cuurSpace
     const textWidth = gCtx.measureText(text).width
     const x = 50 + space
     const y = 50 + space
@@ -61,11 +60,10 @@ function onAddFrame(text){
 
 function onSetLineTxt() {
     gCurrLine = true
-    
     const text = document.querySelector('[name="txt-meme"]').value
     console.log(text);
     setLineTxt(text)
-    text = ''
+    // text = ''
     renderMeme()
 }
 
@@ -102,7 +100,6 @@ function onChangeFontSize(elSize) {
 
     if (elSize === 'increase') gMeme.lines[0].size = size + 5
     else if (elSize === 'decrease') gMeme.lines[0].size = size - 5
-
     renderMeme()
 }
 
@@ -110,7 +107,8 @@ function onChangeFontSize(elSize) {
 function onAddLines() {
     gCurrLine = true
     gCuurLineIdx++
-    console.log(gCuurLineIdx); 
+    console.log(gCuurLineIdx);
+    // text = ''
     const { lines } = gMeme
     var line = {
         txt: 'Add Text Here',
@@ -118,28 +116,25 @@ function onAddLines() {
         color: 'black'
     }
     lines.push(line)
-console.log(lines);
+    console.log(lines);
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
     onAddFrame(line.txt)
-    // renderMeme()
+    renderMeme()
 }
 
 
 function onSwitchLine() {
     gCurrLine = true
-    // gCuurLineIdx = (gCuurLineIdx === gCurrMeme.lines.length - 1)?
-    // 0: gCuurLineIdx + 1
-    const {selectedLineIdx } = gMeme
-    if(selectedLineIdx)
-   
-    gMeme.selectedLineIdx
+
+    gCuurLineIdx = (gCuurLineIdx === gMeme.lines.length - 1) ? 0 : gCuurLineIdx + 1
+
     // gCtx.lineWidth = 2
     // gCtx.strokeRect(45, 20, 200, 45)
-
+    // onAddFrame()
     // renderMeme()
 }
 
 
 
- 
+
