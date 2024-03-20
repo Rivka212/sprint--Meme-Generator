@@ -17,9 +17,9 @@ body {
     width: 40vw;
     background-color: rgb(80, 55, 114);
     /* border: 1px solid rgb(48, 46, 46); */
-    /* margin: 10px auto; */
+/* margin: 10px auto; */
 /* } */
- 
+
 
 
 canvas {
@@ -33,11 +33,11 @@ canvas {
     background-color: rgb(96, 91, 91); */
 }
 
-input {
-    width: 15em;
-    height: 2.5em;
-    margin-inline-start: .7em;
-    margin-bottom: .5em;
+.meme-editor input {
+    width: 18em;
+    height: 3em;
+    margin-inline-start: .8em;
+    margin-bottom: 1em;
     font-size: 1.3em;
     text-align: center;
     border-radius: .5em;
@@ -69,11 +69,11 @@ canvas img {
     align-items: center;
     justify-content: space-between;
 
-    height: 100px;
+    height: 80px;
     width: 96vw;
-    margin: 10px;
-    padding: 10px;
-   
+    margin: 3px;
+    padding: 5px;
+
     background-color: rgb(125, 108, 142);
     border-radius: .5em;
 }
@@ -84,7 +84,7 @@ canvas img {
 
 }
 
-.main-nav li{
+.main-nav li {
     margin-inline-end: 2em;
 }
 
@@ -118,12 +118,12 @@ canvas img {
 }
 
 
-.meme-container {
+/* .meme-container {
     display: flex;
     flex-direction: row;
     margin-top: 3em;
     gap: 2.5em;
-}
+} */
 
 .actions {
     display: flex;
@@ -132,10 +132,10 @@ canvas img {
 }
 
 .actions button {
-     width: 8em;
-     padding: .6em;
+    width: 8em;
+    padding: .6em;
 
-     font-size: 1em;
+    font-size: 1em;
     border-radius: 5px;
 }
 
@@ -144,14 +144,14 @@ canvas img {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 30em;
+    width: 28.1em;
     background-color: rgb(108, 94, 121);
     gap: 1em;
     padding: 1em;
     border-radius: 10px;
 }
 
-.newColor{
+.newColor {
     height: 3em;
     width: 3em;
     border-radius: 10px;
@@ -159,7 +159,7 @@ canvas img {
 
 }
 
-.meme-editor button{
+.meme-editor button {
     height: 3em;
     width: 3em;
 
@@ -169,22 +169,40 @@ canvas img {
 
 }
 
-.imgFont{
+.imgFont {
     height: 1em;
     width: 100%;
     border-radius: .5em;
 }
 
 
-.main-btn{
-display: flex;
-justify-content: center;
-align-content: center;
-margin-bottom: 4em;
-gap: 5px;
+.main-btn {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 4em;
+    gap: 5px;
 }
 
 
 .hidden {
     display: none;
+}
+
+.active-text {
+    display: flex;
+    justify-items: center;
+    align-content: center;
+
+    padding: 15px;
+    border-radius: .5em;
+    background-color: rgb(65, 65, 82);
+}
+
+
+.fontSelect {
+    height: 2.1em;
+    font-size: large;
+    border-radius: .5;
+
 }

@@ -40,9 +40,15 @@
         height: 25em;
     }
 
-/* .main-nav li:not(:last-of-type) {
+    .meme-container {
+        display: flex;
+        flex-direction: row;
+        margin-top: 3em;
+        gap: 2.5em;
+    }
+    /* .main-nav li:not(:last-of-type) {
     /* margin-inline-end: 2em; */
-} 
+}
 
 
 
@@ -56,12 +62,13 @@
         height: 20em;
     }
 
-    
-.main-nav li:not(:last-of-type) {
-    margin-inline-end: 4em;
-}
+
+    .main-nav li:not(:last-of-type) {
+        margin-inline-end: 4em;
+    }
 
     .nav-list {
         margin-inline: 2em;
     }
+
 }
