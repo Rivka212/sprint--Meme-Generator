@@ -8,42 +8,50 @@ let gCuurLineIdx = 0
 
 function renderMeme() {
     const meme = getMeme()
-    const { lines } = meme
-    const [{ txt, size, color }] = lines
-    var space = 0
+    var { lines } = meme
+    var [{ txt, size, color }] = lines
+    // var txt = gMeme.lines[gCuurLineIdx].txt
+    // var size = gMeme.lines[gCuurLineIdx].size
+    // var color = gMeme.lines[gCuurLineIdx].color
     // resizeCanvas()
-
     const img = new Image()
     img.src = gImg.url
 
     img.onload = () => {
         coverCanvasWithImg(img)
-    }
-    // gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
-    // onAddDemoText()
-    for (let i = 0; i < lines.length; i++) {
         gCtx.fillStyle = color
         gCtx.font = size + 'px Arial'
-
-        gCtx.fillText(txt, 50 + space, 50 + space)
-        space += 35
-    } 
-    // onAddFrame(txt)
-    // window.addEventListener('resize', () => resizeCanvas())
+        gCtx.fillText(txt, 50, 50)
+        gCtx.strokeText(txt, 50, 50)
+        console.log('hi');
+    }
 }
+// onAddDemoText()
+//  onAddFrame(txt)
 
-// function onAddDemoText() {
-//     var space = 0
-//     var cuurSpace = 35
-//     var space = gCuurLineIdx * cuurSpace
-//     gCtx.fillStyle = color
-//     gCtx.font = size + 'px Arial'
-//     gCtx.fillText(txt, 50 + space, 50 + space)
-//     space += 35
+// window.addEventListener('resize', () => resizeCanvas())
+
+
+// input.oninput = function() {
+//     drawTextOnCanvas(input.value);
 // }
 
 
+function onAddDemoText(txt,size,color) {
+    console.log('hitxte');
+    var cuurSpace = 35
+    var space = gCuurLineIdx * cuurSpace
+
+    gCtx.fillStyle = color
+    gCtx.font = size + 'px Arial'
+    gCtx.fillText(txt, 50 + space, 50 + space)
+    gCtx.strokeText(txt, 50 + space, 50 + space)
+    renderMeme()
+}
+
+
 function onAddFrame(text) {
+    console.log('hi');
     var cuurSpace = 35
     var space = gCuurLineIdx * cuurSpace
     const textWidth = gCtx.measureText(text).width
@@ -59,6 +67,7 @@ function onAddFrame(text) {
 
 
 function onSetLineTxt() {
+    console.log('hi');
     gCurrLine = true
     const text = document.querySelector('[name="txt-meme"]').value
     console.log(text);
@@ -115,10 +124,12 @@ function onAddLines() {
         size: 30,
         color: 'black'
     }
+    var {txt,size,color} = line
     lines.push(line)
     console.log(lines);
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
+    onAddDemoText(txt,size,color)
     onAddFrame(line.txt)
     renderMeme()
 }
@@ -131,8 +142,8 @@ function onSwitchLine() {
 
     // gCtx.lineWidth = 2
     // gCtx.strokeRect(45, 20, 200, 45)
-    // onAddFrame()
-    // renderMeme()
+    onAddFrame()
+    renderMeme()
 }
 
 
