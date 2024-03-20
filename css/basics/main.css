@@ -132,7 +132,7 @@ canvas img {
 }
 
 .actions button {
-    width: 8em;
+    width: 6.9em;
     padding: .6em;
 
     font-size: 1em;
@@ -180,9 +180,10 @@ canvas img {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-bottom: 4em;
+    margin-bottom: 1.5em;
     gap: 5px;
 }
+
 
 
 .hidden {
@@ -190,19 +191,36 @@ canvas img {
 }
 
 .active-text {
-    display: flex;
-    justify-items: center;
-    align-content: center;
+    /* display: flex; */
+    /* justify-items: center; */
+    
+    /* display: block; */
+/* columns: 1; */
 
-    padding: 15px;
+    padding: 17px;
     border-radius: .5em;
     background-color: rgb(65, 65, 82);
 }
 
+.active-text button{
+     margin: .3em;
+
+     /* margin-inline-start: .3em; */
+    /* padding: 2ems;   */
+}
+
+.active-text:first-child{
+     margin-inline-end: 2em;
+}
 
 .fontSelect {
     height: 2.1em;
     font-size: large;
     border-radius: .5;
 
+}
+
+button {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
 }
