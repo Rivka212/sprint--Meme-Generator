@@ -30,25 +30,25 @@ function createMemes() {
 
 
 
-function createLines() {
-    const lines = []
-    for (let i = 0; i < length.lines; i++) {
-        lines.push(createLine(
-            i + 1, 'Add Text Here', 30, 'black')
-        )
-    }
-    return lines
-}
+// function createLines() {
+//     const lines = []
+//     for (let i = 0; i < length.lines; i++) {
+//         lines.push(createLine(
+//             i + 1, 'Add Text Here', 30, 'black')
+//         )
+//     }
+//     return lines
+// }
 
 
-function createLine(id, txt, size, color) {
-    return {
-        id: 1,
-        txt: 'Add Text Here',
-        size: 30,
-        color: 'black'
-    }
-}
+// function createLine(id, txt, size, color) {
+//     return {
+//         id: 1,
+//         txt: 'Add Text Here',
+//         size: 30,
+//         color: 'black'
+//     }
+// }
 
 
 

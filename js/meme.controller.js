@@ -41,7 +41,6 @@ function onAddDemoText(txt,size,color) {
     console.log('hitxte');
     var cuurSpace = 35
     var space = gCuurLineIdx * cuurSpace
-
     gCtx.fillStyle = color
     gCtx.font = size + 'px Arial'
     gCtx.fillText(txt, 50 + space, 50 + space)

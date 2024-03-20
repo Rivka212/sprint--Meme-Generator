@@ -17,8 +17,8 @@ function renderGallery() {
 
 function onImgSelect(elImg, imgId) {
     console.log(elImg, imgId);
-  
-    const {img} = gImgs
+
+    const { img } = gImgs
 
     const elGallery = document.querySelector('.images-gallery')
     elGallery.classList.add('hidden')
@@ -38,8 +38,7 @@ function onImgSelect(elImg, imgId) {
 
 function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    renderMeme()
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 
