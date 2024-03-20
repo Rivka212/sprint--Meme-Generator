@@ -6,6 +6,26 @@ let gCurrLine = false
 let gCuurLineIdx = 0
 
 
+
+function onloadCanvas() {
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
+    // resizeCanvas()
+    renderMeme()
+
+    var { lines } = gMeme
+    var [{ txt, size, color }] = lines
+    gCtx.fillStyle = color
+    gCtx.font = size + 'px Arial'
+    gCtx.fillText(txt, 50, 50)
+    gCtx.strokeText(txt, 50, 50)
+    console.log('hi');
+    
+
+    // window.addEventListener('resize', () => resizeCanvas())
+}
+
+
 function renderMeme() {
     const meme = getMeme()
     var { lines } = meme
@@ -19,12 +39,8 @@ function renderMeme() {
 
     img.onload = () => {
         coverCanvasWithImg(img)
-        gCtx.fillStyle = color
-        gCtx.font = size + 'px Arial'
-        gCtx.fillText(txt, 50, 50)
-        gCtx.strokeText(txt, 50, 50)
-        console.log('hi');
     }
+
 }
 // onAddDemoText()
 //  onAddFrame(txt)
@@ -37,14 +53,15 @@ function renderMeme() {
 // }
 
 
-function onAddDemoText(txt,size,color) {
+
+function onAddDemoText(txt, size, color) {
     console.log('hitxte');
     var cuurSpace = 35
     var space = gCuurLineIdx * cuurSpace
     gCtx.fillStyle = color
     gCtx.font = size + 'px Arial'
     gCtx.fillText(txt, 50 + space, 50 + space)
-    gCtx.strokeText(txt, 50 + space, 50 + space)
+    // gCtx.strokeText(txt, 50 + space, 50 + space)
     renderMeme()
 }
 
@@ -123,14 +140,14 @@ function onAddLines() {
         size: 30,
         color: 'black'
     }
-    var {txt,size,color} = line
+    var { txt, size, color } = line
     lines.push(line)
     console.log(lines);
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
-    onAddDemoText(txt,size,color)
+    onAddDemoText(txt, size, color)
     onAddFrame(line.txt)
-    renderMeme()
+    // renderMeme()
 }
 
 
@@ -146,5 +163,11 @@ function onSwitchLine() {
 }
 
 
+function onAlignText(elAlign) {
+    gCtx.textAlign = elAlign
+}
 
 
+function onChangeFont(font) {
+    gCtx.font = font
+}
