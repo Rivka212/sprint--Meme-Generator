@@ -20,9 +20,9 @@
 
 
 
-@media(min-width:600px) {
+@media(min-width:690px) {
     .images-gallery {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
     }
 
     .images-gallery img {
@@ -54,6 +54,10 @@
     }
     /* .main-nav li:not(:last-of-type) {
     /* margin-inline-end: 2em; */
+
+  .toggle-menu-btn {
+    display: none;
+  }
 }
 
 
