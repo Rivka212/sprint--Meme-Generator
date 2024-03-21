@@ -13,21 +13,9 @@ function onloadCanvas() {
     // resizeCanvas()
     renderMeme()
 
-    // var { lines } = gMeme
-    // var [{ txt, size, color }] = lines
-    // gCtx.fillStyle = color
-    // gCtx.font = size + 'px Arial'
-    // gCtx.fillText(txt, 50, 50)
-    // gCtx.strokeText(txt, 50, 50)
-    // console.log('hi');
-
-
     // window.addEventListener('resize', () => resizeCanvas())
 }
 
-// var txt = gMeme.lines[gCuurLineIdx].txt
-// var size = gMeme.lines[gCuurLineIdx].size
-// var color = gMeme.lines[gCuurLineIdx].color
 
 
 function renderMeme() {
@@ -41,30 +29,47 @@ function renderMeme() {
     img.onload = () => {
         console.log('hi');
         coverCanvasWithImg(img)
-        onAddDemoText()
+        if (gCuurLineIdx === 0) onAddDemoText()
+        // onSetLineTxt()
+        // if(gCuurLineIdx)
+        onShowLines()
         if (gCuurLineIdx === gMeme.selectedLineIdx) {
             onAddFrame(txt)
         }
     }
 }
-// resizeCanvas()
 
 
-// window.addEventListener('resize', () => resizeCanvas())
 
 
-// input.oninput = function() {
-//     drawTextOnCanvas(input.value);
-// }
+function onShowLines() {
+    console.log('hi');
+    if (gCuurLineIdx === 0) return
+    const { lines } = gMeme
+    // var [{ txt, size, color, location }] = lines
+    for (let i = 0; i < lines.length - 1; i++) {
+        // var currLines = lines[0].txt
+        lines.forEach(line => {
+            var { txt, size, color, location } = line
+            console.log(txt, size, color);
 
+            gCtx.fillStyle = color
+            gCtx.font = size + 'px Arial'
+            gCtx.fillText(txt, location.x, location.y)
+
+        })
+    }
+}
 
 
 function onAddDemoText(txt, size, color) {
-    var txt = gMeme.lines[gCuurLineIdx].txt
-    var size = gMeme.lines[gCuurLineIdx].size
-    var color = gMeme.lines[gCuurLineIdx].color
+    console.log('hitext');
+    var { lines } = gMeme
+    var txt = lines[gCuurLineIdx].txt
+    var size = lines[gCuurLineIdx].size
+    var color = lines[gCuurLineIdx].color
 
-    console.log('hitxte');
+    // console.log('hitxte');
     var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace
     gCtx.fillStyle = color
@@ -76,7 +81,6 @@ function onAddDemoText(txt, size, color) {
 
 
 function onAddFrame(text) {
-    console.log(gCuurLineIdx, gMeme.selectedLineIdx);
 
     if (!gCuurLineIdx === gMeme.selectedLineIdx) return
 
@@ -86,15 +90,8 @@ function onAddFrame(text) {
     const x = 50 + space
     const y = 50 + space
     const padding = 10
-    //    gCtx.clearRect(x - padding, y - 30, textWidth + 2 * padding, 40)
     // gCtx.fillText(text, x, y)
     gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
-
-    // onAddLocation(x - padding, y - 30, textWidth + 2 * padding, 40)
-
-    // renderMeme()
-    // var place = textWidth.getBoundingClientRect()
-    // console.log(place);
 }
 
 
@@ -124,14 +121,12 @@ function onSetLineTxt() {
     onAddFrame(text)
     onAddLocation(text)
     renderMeme()
-    // text = ''
-
 }
-// saveText(text)
-// text = ''
+
+
 function changeFontFamily() {
     var fontSelect = document.querySelector('fontSelect').value
-    document.getElementById('textToChange').style.fontFamily = fontSelect
+    gCtx.font = fontSelect
 }
 
 
@@ -170,7 +165,7 @@ function onAddLines() {
     gCurrLine = true
     gCuurLineIdx++
     console.log(gCuurLineIdx);
-    // text = ''
+
     const { lines } = gMeme
     var line = {
         txt: 'Add Text Here',
@@ -183,33 +178,18 @@ function onAddLines() {
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
     document.querySelector('[name="txt-meme"]').value = ''
-    // console.log(document.querySelector('[name="txt-meme"]').value = '');
+
     onAddDemoText(txt, size, color)
     onAddFrame(line.txt)
     // renderMeme()
 }
 
 
-function onShowLines() {
-    const { lines } = gMeme
-    const { txt } = lines
-    for (let i = 0; i < lines.length; i++) {
-        const element = array[i];
-
-    }
-
-
-    // element.getBoundingClientRect()
-}
-
 
 function onSwitchLine() {
     gCurrLine = true
-
     gCuurLineIdx = (gCuurLineIdx === gMeme.lines.length - 1) ? 0 : gCuurLineIdx + 1
 
-    // gCtx.lineWidth = 2
-    // gCtx.strokeRect(45, 20, 200, 45)
     onAddFrame()
     renderMeme()
 }
@@ -226,9 +206,8 @@ function onChangeFont(font) {
 
 
 
-// function onMouseMove(ev) {
-// ?const { offsetX, offsetY, pageX, pagetY } = ev
-// const { offsetX, offsetY, clientX, clientY } = ev
+// gCtx.lineWidth = 2
+// gCtx.strokeRect(45, 20, 200, 45)
 
 // var mouseX = ev.clientX - canvas.getBoundingClientRect().left
 // var mouseY = ev.clientY - canvas.getBoundingClientRect().top
@@ -241,12 +220,3 @@ function onChangeFont(font) {
 // // }
 
 
-// console.log();
-// :TODO - find the hovered star
-
-// const star = gStars.find(star => {
-//     var { x, y, rate } = star
-
-//     return (offsetX >= x && offsetX <= x + BAR_WIDTH &&
-//             offsetY >= y && offsetY <= y + rate)
-// })

@@ -4,8 +4,6 @@ const STORAGE_KEY = 'memeDB'
 
 var gImg
 var gImgs = createImgs()
-// var gLines = createLines()
-
 var gMemes = []
 
 var gMeme = {
@@ -27,29 +25,6 @@ function createMemes() {
     gMemes = loadFromStorage(STORAGE_KEY)
     _saveCarsToStorage()
 }
-
-
-
-// function createLines() {
-//     const lines = []
-//     for (let i = 0; i < length.lines; i++) {
-//         lines.push(createLine(
-//             i + 1, 'Add Text Here', 30, 'black')
-//         )
-//     }
-//     return lines
-// }
-
-
-// function createLine(id, txt, size, color) {
-//     return {
-//         id: 1,
-//         txt: 'Add Text Here',
-//         size: 30,
-//         color: 'black'
-//     }
-// }
-
 
 
 function getMeme() {
@@ -101,3 +76,24 @@ function createImg(id, url, keywords) {
 function _saveCarsToStorage() {
     saveToStorage(STORAGE_KEY, gMemes)
 }
+
+
+// function createLines() {
+//     const lines = []
+//     for (let i = 0; i < length.lines; i++) {
+//         lines.push(createLine(
+//             i + 1, 'Add Text Here', 30, 'black')
+//         )
+//     }
+//     return lines
+// }
+
+
+// function createLine(id, txt, size, color) {
+//     return {
+//         id: 1,
+//         txt: 'Add Text Here',
+//         size: 30,
+//         color: 'black'
+//     }
+// }
