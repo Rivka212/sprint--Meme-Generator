@@ -13,13 +13,13 @@ function onloadCanvas() {
     // resizeCanvas()
     renderMeme()
 
-    var { lines } = gMeme
-    var [{ txt, size, color }] = lines
-    gCtx.fillStyle = color
-    gCtx.font = size + 'px Arial'
-    gCtx.fillText(txt, 50, 50)
-    gCtx.strokeText(txt, 50, 50)
-    console.log('hi');
+    // var { lines } = gMeme
+    // var [{ txt, size, color }] = lines
+    // gCtx.fillStyle = color
+    // gCtx.font = size + 'px Arial'
+    // gCtx.fillText(txt, 50, 50)
+    // gCtx.strokeText(txt, 50, 50)
+    // console.log('hi');
 
 
     // window.addEventListener('resize', () => resizeCanvas())
@@ -89,8 +89,29 @@ function onAddFrame(text) {
     //    gCtx.clearRect(x - padding, y - 30, textWidth + 2 * padding, 40)
     // gCtx.fillText(text, x, y)
     gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
+
+    // onAddLocation(x - padding, y - 30, textWidth + 2 * padding, 40)
+
     // renderMeme()
+    // var place = textWidth.getBoundingClientRect()
+    // console.log(place);
 }
+
+
+function onAddLocation(text) {
+    var { lines } = gMeme
+    // lines[gCuurLineIdx].location = { x, y, z, v }
+    //     console.log( lines[gCuurLineIdx].location );
+    var cuurSpace = 40
+    var space = gCuurLineIdx * cuurSpace
+    const textWidth = gCtx.measureText(text).width
+    const x = 50 + space
+    const y = 50 + space
+    const padding = 10
+
+    lines[gCuurLineIdx].location = { x: x - padding, y: y - 30, z: textWidth + 2 * padding, v: 40 }
+}
+
 
 
 function onSetLineTxt() {
@@ -101,9 +122,10 @@ function onSetLineTxt() {
     console.log(text);
     setLineTxt(text)
     onAddFrame(text)
-
+    onAddLocation(text)
     renderMeme()
     // text = ''
+
 }
 // saveText(text)
 // text = ''
@@ -160,9 +182,24 @@ function onAddLines() {
     console.log(lines);
     gMeme.selectedLineIdx++
     console.log(gMeme.selectedLineIdx);
+    document.querySelector('[name="txt-meme"]').value = ''
+    // console.log(document.querySelector('[name="txt-meme"]').value = '');
     onAddDemoText(txt, size, color)
     onAddFrame(line.txt)
     // renderMeme()
+}
+
+
+function onShowLines() {
+    const { lines } = gMeme
+    const { txt } = lines
+    for (let i = 0; i < lines.length; i++) {
+        const element = array[i];
+
+    }
+
+
+    // element.getBoundingClientRect()
 }
 
 
@@ -186,3 +223,30 @@ function onAlignText(elAlign) {
 function onChangeFont(font) {
     gCtx.font = font
 }
+
+
+
+// function onMouseMove(ev) {
+// ?const { offsetX, offsetY, pageX, pagetY } = ev
+// const { offsetX, offsetY, clientX, clientY } = ev
+
+// var mouseX = ev.clientX - canvas.getBoundingClientRect().left
+// var mouseY = ev.clientY - canvas.getBoundingClientRect().top
+
+// console.log(mouseX, mouseY);
+
+// // עדכון מיקום הטקסט בהתאם למיקום של העכבר
+// textElement.style.left = mouseX + 'px';
+// textElement.style.top = mouseY + 'px';
+// // }
+
+
+// console.log();
+// :TODO - find the hovered star
+
+// const star = gStars.find(star => {
+//     var { x, y, rate } = star
+
+//     return (offsetX >= x && offsetX <= x + BAR_WIDTH &&
+//             offsetY >= y && offsetY <= y + rate)
+// })
