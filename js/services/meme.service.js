@@ -15,8 +15,8 @@ var gMeme = {
         txt: 'Add Text Here',
         size: 30,
         color: 'black',
-        location: {x:50, y:50}
-        }]
+        location: { x: 40, y: 20, z: 210, v: 40 }
+    }]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -59,7 +59,7 @@ function getMeme() {
 
 function setLineTxt(text) {
     var { selectedLineIdx } = gMeme
-     selectedLineIdx = gCuurLineIdx 
+    selectedLineIdx = gCuurLineIdx
     //  console.log(s);
     // if(g gMemes.selectedLineIdx)
     gMeme.lines[selectedLineIdx].txt = text
