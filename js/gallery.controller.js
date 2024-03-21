@@ -43,3 +43,26 @@ function coverCanvasWithImg(elImg) {
 
 
 
+
+
+function goToGallery(){
+    const elGallery = document.querySelector('.images-gallery')
+    elGallery.classList.remove('hidden')
+
+    const elimgMeme = document.querySelector('.meme-container')
+    elimgMeme.classList.add('hidden')
+}
+
+
+
+function goToSaved(){
+    
+}
+
+
+
+
+function goToRandomize(){
+    
+}
+

@@ -91,7 +91,7 @@ canvas img {
     flex-direction: column;
     /* margin-inline: 1em; */
     justify-content: space-between;
-    font-size: 1.3em;
+   
 }
 
 
@@ -114,6 +114,19 @@ canvas img {
 }
 
 
+.nav-list button{
+    background-color: rgb(125, 108, 142);
+    border-radius: .5em;
+    border: none;
+    font-size: 1.3em;
+    padding: 5px;
+}
+
+
+.nav-list button:hover{
+    border-radius: .5em;
+    color: rgb(218, 206, 232);
+}
 /* .meme-container {
     display: flex;
     flex-direction: row;
@@ -219,4 +232,13 @@ canvas img {
 button {
     cursor: -webkit-grabbing;
     cursor: grabbing;
+}
+
+.toggle-menu-btn{
+    margin-right: 1em;
+     background-color: rgb(125, 108, 142);
+     color: antiquewhite;
+    border: none;
+    font-size: 1.7em;
+
 }
