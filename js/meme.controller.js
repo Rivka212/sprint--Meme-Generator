@@ -20,30 +20,35 @@ function onloadCanvas() {
     gCtx.fillText(txt, 50, 50)
     gCtx.strokeText(txt, 50, 50)
     console.log('hi');
-    
+
 
     // window.addEventListener('resize', () => resizeCanvas())
 }
+
+// var txt = gMeme.lines[gCuurLineIdx].txt
+// var size = gMeme.lines[gCuurLineIdx].size
+// var color = gMeme.lines[gCuurLineIdx].color
 
 
 function renderMeme() {
     const meme = getMeme()
     var { lines } = meme
     var [{ txt, size, color }] = lines
-    // var txt = gMeme.lines[gCuurLineIdx].txt
-    // var size = gMeme.lines[gCuurLineIdx].size
-    // var color = gMeme.lines[gCuurLineIdx].color
-    // resizeCanvas()
+
     const img = new Image()
     img.src = gImg.url
 
     img.onload = () => {
+        console.log('hi');
         coverCanvasWithImg(img)
+        onAddDemoText()
+        if (gCuurLineIdx === gMeme.selectedLineIdx) {
+            onAddFrame(txt)
+        }
     }
-
 }
-// onAddDemoText()
-//  onAddFrame(txt)
+// resizeCanvas()
+
 
 // window.addEventListener('resize', () => resizeCanvas())
 
@@ -55,43 +60,53 @@ function renderMeme() {
 
 
 function onAddDemoText(txt, size, color) {
+    var txt = gMeme.lines[gCuurLineIdx].txt
+    var size = gMeme.lines[gCuurLineIdx].size
+    var color = gMeme.lines[gCuurLineIdx].color
+
     console.log('hitxte');
-    var cuurSpace = 35
+    var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace
     gCtx.fillStyle = color
     gCtx.font = size + 'px Arial'
     gCtx.fillText(txt, 50 + space, 50 + space)
     // gCtx.strokeText(txt, 50 + space, 50 + space)
-    renderMeme()
+    // renderMeme()
 }
 
 
 function onAddFrame(text) {
-    console.log('hi');
-    var cuurSpace = 35
+    console.log(gCuurLineIdx, gMeme.selectedLineIdx);
+
+    if (!gCuurLineIdx === gMeme.selectedLineIdx) return
+
+    var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace
     const textWidth = gCtx.measureText(text).width
     const x = 50 + space
     const y = 50 + space
     const padding = 10
-    // gCtx.fillText(txt, 50 + space, 50 + space)
-    // space += 35
-    gCtx.fillText(text, x, y)
+    //    gCtx.clearRect(x - padding, y - 30, textWidth + 2 * padding, 40)
+    // gCtx.fillText(text, x, y)
     gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
-    renderMeme()
+    // renderMeme()
 }
 
 
 function onSetLineTxt() {
     console.log('hi');
+
     gCurrLine = true
     const text = document.querySelector('[name="txt-meme"]').value
     console.log(text);
     setLineTxt(text)
-    // text = ''
-    renderMeme()
-}
+    onAddFrame(text)
 
+    renderMeme()
+    // text = ''
+}
+// saveText(text)
+// text = ''
 function changeFontFamily() {
     var fontSelect = document.querySelector('fontSelect').value
     document.getElementById('textToChange').style.fontFamily = fontSelect
