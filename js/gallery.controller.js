@@ -1,16 +1,12 @@
 'use strict'
 
-
-
 function renderGallery() {
     var images = gImgs
-    // console.log(images);
     const elImages = document.querySelector('.images-gallery')
 
     const strHTML = images.map(img => {
         return `<img src="imgs/${img.id}.jpg" onclick="onImgSelect(this,${img.id})" id=${img.id}>`
     })
-
     elImages.innerHTML = strHTML.join('')
 }
 
@@ -45,7 +41,7 @@ function coverCanvasWithImg(elImg) {
 
 
 
-function goToGallery(){
+function goToGallery() {
     const elGallery = document.querySelector('.images-gallery')
     elGallery.classList.remove('hidden')
 
@@ -55,14 +51,14 @@ function goToGallery(){
 
 
 
-function goToSaved(){
-    
+function goToSaved() {
+
 }
 
 
 
 
-function goToRandomize(){
-    
+function goToRandomize() {
+
 }
 

@@ -4,14 +4,9 @@
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    // renderMeme()
 
     // addListeners()
-    // resizeCanvas()
-
     renderGallery()
-    // window.addEventListener('resize', () => resizeCanvas())
-
 }
 
 
