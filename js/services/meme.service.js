@@ -13,7 +13,7 @@ var gMeme = {
         txt: 'Add Text Here',
         size: 30,
         color: 'black',
-        location: { x: 40, y: 20, w: 210, h: 40 }
+        location: { x: 40, y: 20, w: 230, h: 40 }
     }]
 }
 
