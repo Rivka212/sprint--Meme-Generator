@@ -16,7 +16,6 @@ body {
 .canvas-container {
     width: 40vw;
     background-color: rgb(80, 55, 114);
-    /* border: 1px solid rgb(48, 46, 46); */
     margin: 10px auto;
 }
 
@@ -127,12 +126,7 @@ canvas img {
     border-radius: .5em;
     color: rgb(218, 206, 232);
 }
-/* .meme-container {
-    display: flex;
-    flex-direction: row;
-    margin-top: 3em;
-    gap: 2.5em;
-} */
+
 
 .actions {
     display: flex;
