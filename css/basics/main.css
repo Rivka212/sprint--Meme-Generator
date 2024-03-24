@@ -240,5 +240,8 @@ button {
      color: antiquewhite;
     border: none;
     font-size: 1.7em;
+}
 
+button:hover{
+    background-color: rgb(220, 204, 173);
 }
