@@ -11,8 +11,8 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [{
         txt: 'Add Text Here',
-        size: 30,
-        color: 'black',
+        size: 35,
+        color: 'white',
         location: { x: 40, y: 20, w: 230, h: 40 }
     }]
 }

@@ -7,7 +7,7 @@ let gCuurLineIdx = 0
 let gFrame = 0
 let gCurrFrame = false
 
-const gQueryOptions = { font: 'px Verdana' }
+const gQueryOptions = { font: 'px Verdana', strokeColor: 'black' }
 
 
 function onloadCanvas() {
@@ -32,10 +32,8 @@ function renderMeme() {
     img.onload = () => {
         console.log('hi');
         coverCanvasWithImg(img)
-    //    if(gCuurLineIdx === 0)
-
-        onAddDemoText()
-      
+        if (gCuurLineIdx === 0) onAddDemoText()
+        //    onAddDemoText()
         onShowLines()
     }
 }
@@ -64,21 +62,25 @@ function onAddDemoText(txt, size, color) {
     var size = lines[gCuurLineIdx].size
     var color = lines[gCuurLineIdx].color
     var location = lines[gCuurLineIdx].location
-    // console.log(lines[gCuurLineIdx].location);
-    // console.log(location);
-    // console.log('hitxte');
+
     var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace + 50
     gCtx.fillStyle = color
-    // gCtx.textAlign = 'center'
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = gQueryOptions.strokeColor
+    // gCtx.textAlign = 'left'
+
+
     gCtx.font = size + gQueryOptions.font
     var x = space
     var y = space
+    gCtx.strokeText(txt, x, y)
+
     gCtx.fillText(txt, x, y)
     // }
     gMeme.lines[gCuurLineIdx].location.x = x
     gMeme.lines[gCuurLineIdx].location.y = y
-
+    console.log(gMeme.lines[gCuurLineIdx].location.x = x);
     onAddFrame(txt)
 }
 
@@ -119,21 +121,66 @@ function checkOnCanvas(ev) {
 
 function onAddFrame(text) {
     console.log('hi frame');
+    var { lines } = gMeme
+    var [{ size }] = lines
+    console.log('size', size);
     if (!gFrame === gMeme.selectedLineIdx) return
-    if(gCurrFrame)
-    console.log('baymi');
+    if (gCurrFrame)
+        console.log('baymi');
     var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace
-    const textWidth = gCtx.measureText(text).width
-    const x = 50 + space
-    const y = 50 + space
-    const padding = 10
-    // gCtx.fillText(text, x, y)
-    gCtx.strokeRect(x - padding, y - 30, textWidth + 2 * padding, 40)
-   console.log(x - padding, y - 30, textWidth + 2 * padding, 40);
-    // onShowLines()
+    gCtx.font = size + gQueryOptions.font
 
+    const textWidth = gCtx.measureText(text).width
+    const x = 40 + space
+    const y = 40 + space
+    const padding = 10
+    gCtx.strokeStyle = 'black'
+    // gCtx.fillText(text, x, y)
+    gCtx.strokeRect(x - padding, y - padding, textWidth + (2 * padding), size + (2 * padding))
+    console.log(x - padding, y - padding, textWidth + 2 * padding, 40);
+    // onShowLines()
+    // renderMeme()
 }
+
+// fontSize = 24;
+
+// function drawText(text) { ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+// ctx.font = ${fontSize}px Arial; const textWidth = ctx.measureText(text).width;
+
+// ctx.strokeStyle = 'black'; ctx.strokeRect(10, 10, textWidth + 20, fontSize + 20);
+
+// ctx.fillStyle = 'black'; ctx.fillText(text, 20, 30); }
+
+// function updateTextSize(text) { fontSize = 24 + text.length; // כאן ניתן להתאים את הנוסחה לפי הצורך drawText(text); }
+
+// const inputText = 'Resizable Text'; updateTextSize(inputText); ```
+
+// בקוד זה, אנו משתמשים ב-Canvas API כדי ליצור טקסט עם מסגרת שמש
+
+
+//  let fontSize = 24;
+// ctx.strokeRect(10 - padding, 10 - padding, textWidth + 20 + (padding * 2), fontSize + 20 + (padding * 2));
+
+
+
+// function drawText(text) { 
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+//  ctx.strokeRect(10, 10, textWidth + 20, fontSize + 20);
+
+
+// function updateTextSize(text) { 
+//     fontSize = 24 + text.length; // כאן ניתן להתאים את הנוסחה לפי הצורך 
+// drawText(text); }
+
+// const inputText = 'Resizable Text'; updateTextSize(inputText);}
+
+
+
+
 
 function onAddLocation(text) {
     var { lines } = gMeme
@@ -161,7 +208,7 @@ function onSetLineTxt() {
 
     setLineTxt(text)
 
-    // onAddFrame(text)
+    onAddFrame(text)
     console.log(text);
     // onAddLocation(text)
     renderMeme()
@@ -182,15 +229,25 @@ function downloadMeme(elLink) {
 
 function onSetColor() {
     document.getElementById('colorPicker').click()
-    // const newColor = document.getElementById('colorPicker').value
 }
 
+
 function showColor() {
-    // document.getElementById('colorPicker').click()
     var newColor = document.getElementById('colorPicker').value
     gMeme.lines[gCuurLineIdx].color = newColor
     renderMeme()
 }
+
+function onSetStrokeColor() {
+    document.getElementById('strokeColor').click()
+}
+
+function showStrokeColor() {
+    var strokeNewColor = document.getElementById('strokeColor').value
+    gQueryOptions.strokeColor = strokeNewColor
+    renderMeme()
+}
+
 
 
 
@@ -211,8 +268,8 @@ function onAddLines() {
     const { lines } = gMeme
     var line = {
         txt: 'Add Text Here',
-        size: 30,
-        color: 'black',
+        size: 35,
+        color: 'white',
         location: { x: 40, y: 20, w: 230, h: 40 },
     }
     var { txt, size, color, location } = line
@@ -221,7 +278,7 @@ function onAddLines() {
     gFrame++
     gMeme.selectedLineIdx++
     document.querySelector('[name="txt-meme"]').value = ''
-    
+
     onAddFrame(line.txt)
     onAddDemoText(txt, size, color, location)
     // onAddFrame(line.txt)
@@ -244,7 +301,12 @@ function onAlignText(elAlign) {
 }
 
 
-
+function onDeleteLine() {
+    gCuurLineIdx
+    var { lines } = gMeme
+    lines.splice(gCuurLineIdx, 1)
+    renderMeme()
+}
 
 
 // gCtx.lineWidth = 2

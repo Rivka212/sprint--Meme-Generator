@@ -12,10 +12,7 @@ function renderGallery() {
 
 
 function onImgSelect(elImg, imgId) {
-    console.log(elImg, imgId);
-
     const { img } = gImgs
-
     const elGallery = document.querySelector('.images-gallery')
     elGallery.classList.add('hidden')
 

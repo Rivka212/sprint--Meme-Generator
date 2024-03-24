@@ -39,7 +39,7 @@
                 <div class="main-btn">
                     <button onclick="onSwitchLine()"><i class="fa-solid fa-arrow-up arrow-down"></i></button>
                     <button onclick="onAddLines()"><i class="fa-solid fa-plus"></i></button>
-                    <button><i class="fa-solid fa-trash-can"></i></button>
+                    <button onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
                 <section class="active-text">
                     <div>
@@ -60,7 +60,9 @@
                         </select>
 
                         <!-- <button><i class="fa-solid fa-brush"></i></button> -->
-                        <button><i class="fa-solid fa-paintbrush"></i></button>
+                        <input type="color" id="strokeColor" class="hidden" onchange="showStrokeColor()">
+                        <button onclick="onSetStrokeColor()"><i class="fa-solid fa-paintbrush"></i></button>
+                        
                         <input type="color" id="colorPicker" class="hidden" onchange="showColor()">
                         <button onclick="onSetColor()"><i class="fa-solid fa-brush"></i></button>
                     </div>
