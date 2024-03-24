@@ -19,6 +19,9 @@ function onImgSelect(elImg, imgId) {
     const elimgMeme = document.querySelector('.meme-container')
     elimgMeme.classList.remove('hidden')
 
+    const elSaved = document.querySelector('.memes-saved')  
+    elSaved.classList.add('hidden')
+
     setImg(imgId)
     // coverCanvasWithImg(elImg)
     onloadCanvas()
@@ -44,14 +47,33 @@ function goToGallery() {
 
     const elimgMeme = document.querySelector('.meme-container')
     elimgMeme.classList.add('hidden')
+
+    const elSaved = document.querySelector('.memes-saved')  
+  elSaved.classList.add('hidden')
 }
 
 
 
 function goToSaved() {
+  const elSaved = document.querySelector('.memes-saved')  
+  elSaved.classList.remove('hidden')
 
+  const elGallery = document.querySelector('.images-gallery')
+  elGallery.classList.add('hidden')
+
+  const elimgMeme = document.querySelector('.meme-container')
+  elimgMeme.classList.add('hidden')
+
+    gMemes = loadFromStorage('canvas')
+    const { lines } = gMeme
+
+    const img = new Image()
+     img.src = 'canvas'
+    gImg.onload = () => {
+        coverCanvasWithImg(gImg)
+        //  gCtx.drawImage(img, 0, 0)
+    }
 }
-
 
 
 
