@@ -7,7 +7,7 @@ let gCuurLineIdx = 0
 let gFrame = 0
 let gCurrFrame = false
 
-const gQueryOptions = { font: 'px Verdana', strokeColor: 'black' }
+const gQueryOptions = { font: 'px Verdana', strokeColor: 'black', sizeFrame: '35' }
 
 
 function onloadCanvas() {
@@ -32,8 +32,8 @@ function renderMeme() {
     img.onload = () => {
         console.log('hi');
         coverCanvasWithImg(img)
-        if (gCuurLineIdx === 0) onAddDemoText()
-        //    onAddDemoText()
+        // if (gCuurLineIdx === 0) onAddDemoText()
+        onAddDemoText()
         onShowLines()
     }
 }
@@ -45,13 +45,16 @@ function onShowLines() {
     console.log('hi-show');
     if (gFrame === 0) return
     const { lines } = gMeme
-
     lines.forEach(line => {
         var { txt, size, color, location } = line
         gCtx.fillStyle = color
         gCtx.font = size + gQueryOptions.font
         gCtx.fillText(txt, location.x, location.y)
+        console.log('location.x, location.y', location.x, location.y);
+
     })
+
+    // console.log('location.x, location.y', location.x, location.y);
 }
 
 
@@ -63,26 +66,23 @@ function onAddDemoText(txt, size, color) {
     var color = lines[gCuurLineIdx].color
     var location = lines[gCuurLineIdx].location
 
-    var cuurSpace = 40
-    var space = gCuurLineIdx * cuurSpace + 50
+    var cuurSpace = 60
+    var space = gCuurLineIdx * cuurSpace + 80
     gCtx.fillStyle = color
     gCtx.lineWidth = 2
     gCtx.strokeStyle = gQueryOptions.strokeColor
-    // gCtx.textAlign = 'left'
-
-
+    // gCtx.textAlign = 'center'
     gCtx.font = size + gQueryOptions.font
-    var x = space
+    var x = space - 27
     var y = space
     gCtx.strokeText(txt, x, y)
-
     gCtx.fillText(txt, x, y)
-    // }
     gMeme.lines[gCuurLineIdx].location.x = x
     gMeme.lines[gCuurLineIdx].location.y = y
-    console.log(gMeme.lines[gCuurLineIdx].location.x = x);
+    console.log('x, y', x, y);
     onAddFrame(txt)
 }
+
 
 function checkOnCanvas(ev) {
     const { offsetX, offsetY, clientX, clientY } = ev
@@ -95,24 +95,28 @@ function checkOnCanvas(ev) {
     // var rate = w * h
     console.log(gMeme.lines[gCuurLineIdx].location.x);
 
+    // (x - padding, y - padding, textWidth + 2 * padding, size + 2 * padding)
+
+
     var line = lines.find(line => {
         var { location } = line
         // var { x, y, w, h } = location
         // var rate = w * h
         //  [{ location }] = lines
+        var padding = 10
         console.log(line);
         console.log(lines[gCuurLineIdx].location.x)
 
         console.log(location.x, location.y, location.w, location.h);
         console.log(offsetX, offsetY, clientX, clientY);
-        return (offsetX >= location.x && offsetX <= location.x + location.w &&
-            offsetY >= location.y && offsetY <= location.h)
+        return (offsetX >= location.x - padding && offsetX <= location.x + location.w + 2 * padding &&
+            offsetY >= location.y + padding && offsetY <= location.h)
         // return (offsetX >= x && offsetX <= x + w &&
         //         offsetY >= y && offsetY <= y + rate)
     })
 
     if (line) {
-        console.log('coco');
+        console.log('cocojknlsknblkfml');
     }
 
 }
@@ -127,63 +131,32 @@ function onAddFrame(text) {
     if (!gFrame === gMeme.selectedLineIdx) return
     if (gCurrFrame)
         console.log('baymi');
-    var cuurSpace = 40
+    var cuurSpace = 60
     var space = gCuurLineIdx * cuurSpace
     gCtx.font = size + gQueryOptions.font
 
     const textWidth = gCtx.measureText(text).width
-    const x = 40 + space
-    const y = 40 + space
+    const x = 50 + space
+    const y = 50 + space
     const padding = 10
     gCtx.strokeStyle = 'black'
     // gCtx.fillText(text, x, y)
-    gCtx.strokeRect(x - padding, y - padding, textWidth + (2 * padding), size + (2 * padding))
+    gCtx.strokeRect(x - padding, y - padding, textWidth + 2 * padding, size + 2 * padding)
     console.log(x - padding, y - padding, textWidth + 2 * padding, 40);
-    // onShowLines()
+    // gMeme.lines[gCuurLineIdx].location.x = x-padding
+    // gMeme.lines[gCuurLineIdx].location.y = y-padding
+    // // onShowLines()
     // renderMeme()
+    // onAddLocation()
+    // lines[gCuurLineIdx].location = { x: x - padding, y: y - padding, w: textWidth + 2 * padding, h: size + 2 * padding }
+
 }
 
-// fontSize = 24;
-
-// function drawText(text) { ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-// ctx.font = ${fontSize}px Arial; const textWidth = ctx.measureText(text).width;
-
-// ctx.strokeStyle = 'black'; ctx.strokeRect(10, 10, textWidth + 20, fontSize + 20);
-
-// ctx.fillStyle = 'black'; ctx.fillText(text, 20, 30); }
-
-// function updateTextSize(text) { fontSize = 24 + text.length; // כאן ניתן להתאים את הנוסחה לפי הצורך drawText(text); }
-
-// const inputText = 'Resizable Text'; updateTextSize(inputText); ```
-
-// בקוד זה, אנו משתמשים ב-Canvas API כדי ליצור טקסט עם מסגרת שמש
-
-
-//  let fontSize = 24;
-// ctx.strokeRect(10 - padding, 10 - padding, textWidth + 20 + (padding * 2), fontSize + 20 + (padding * 2));
-
-
-
-// function drawText(text) { 
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-//  ctx.strokeRect(10, 10, textWidth + 20, fontSize + 20);
-
-
-// function updateTextSize(text) { 
-//     fontSize = 24 + text.length; // כאן ניתן להתאים את הנוסחה לפי הצורך 
-// drawText(text); }
-
-// const inputText = 'Resizable Text'; updateTextSize(inputText);}
-
-
-
-
+console.log();
 
 function onAddLocation(text) {
     var { lines } = gMeme
+    var [{ size }] = lines
     // lines[gCuurLineIdx].location = { x, y, z, v }
     //     console.log( lines[gCuurLineIdx].location );
     var cuurSpace = 40
@@ -194,7 +167,7 @@ function onAddLocation(text) {
     const padding = 10
     console.log(text);
 
-    lines[gCuurLineIdx].location = { x: x - padding, y: y - 30, w: textWidth + 2 * padding, h: 40 }
+    lines[gCuurLineIdx].location = { x: x - padding, y: y - padding, w: textWidth + 2 * padding, h: size + 2 * padding }
     console.log(lines[gCuurLineIdx].location);
 }
 
@@ -249,8 +222,6 @@ function showStrokeColor() {
 }
 
 
-
-
 function onChangeFontSize(elSize) {
     const { lines } = gMeme
     const [{ size }] = lines
@@ -270,7 +241,7 @@ function onAddLines() {
         txt: 'Add Text Here',
         size: 35,
         color: 'white',
-        location: { x: 40, y: 20, w: 230, h: 40 },
+        location: { x: 40, y: 40, w: 300, h: 40 },
     }
     var { txt, size, color, location } = line
     lines.push(line)
@@ -322,4 +293,9 @@ function onDeleteLine() {
 // textElement.style.top = mouseY + 'px';
 // // }
 
+function onSave() { 
+    gMemes.push(gMeme)
 
+    const dataURL = gElCanvas.toDataURL()
+    saveToStorage('canvas', dataURL)
+}

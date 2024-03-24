@@ -1,6 +1,6 @@
 'use strict'
 
-const STORAGE_KEY = 'memeDB'
+// const STORAGE_KEY = 'memeDB'
 
 var gImg
 var gImgs = createImgs()
@@ -13,7 +13,7 @@ var gMeme = {
         txt: 'Add Text Here',
         size: 35,
         color: 'white',
-        location: { x: 40, y: 20, w: 230, h: 40 }
+        location: { x: 40, y: 40, w: 300, h: 40 }
     }]
 }
 
@@ -73,27 +73,8 @@ function createImg(id, url, keywords) {
 
 
 
-function _saveCarsToStorage() {
-    saveToStorage(STORAGE_KEY, gMemes)
-}
-
-
-// function createLines() {
-//     const lines = []
-//     for (let i = 0; i < length.lines; i++) {
-//         lines.push(createLine(
-//             i + 1, 'Add Text Here', 30, 'black')
-//         )
-//     }
-//     return lines
+// function _saveCarsToStorage() {
+//     saveToStorage(STORAGE_KEY, gMemes)
 // }
 
 
-// function createLine(id, txt, size, color) {
-//     return {
-//         id: 1,
-//         txt: 'Add Text Here',
-//         size: 30,
-//         color: 'black'
-//     }
-// }
