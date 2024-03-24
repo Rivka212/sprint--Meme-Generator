@@ -27,10 +27,6 @@ function onImgSelect(elImg, imgId) {
     onloadCanvas()
 }
 
-// function onSelectImg(elImg) {
-//     coverCanvasWithImg(elImg)
-// }
-
 
 function coverCanvasWithImg(elImg) {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width

@@ -35,8 +35,6 @@ function getMeme() {
 function setLineTxt(text) {
     var { selectedLineIdx } = gMeme
     selectedLineIdx = gCuurLineIdx
-    //  console.log(s);
-    // if(g gMemes.selectedLineIdx)
     gMeme.lines[selectedLineIdx].txt = text
 }
 

@@ -6,6 +6,7 @@ let gCurrLine = false
 let gCuurLineIdx = 0
 let gFrame = 0
 let gCurrFrame = false
+let gDeteleLine = false
 
 const gQueryOptions = { font: 'px Verdana', strokeColor: 'black', sizeFrame: '35' }
 
@@ -30,19 +31,14 @@ function renderMeme() {
     img.src = gImg.url
 
     img.onload = () => {
-        console.log('hi');
         coverCanvasWithImg(img)
-        // if (gCuurLineIdx === 0) onAddDemoText()
         onAddDemoText()
         onShowLines()
     }
 }
 
 
-
-
 function onShowLines() {
-    console.log('hi-show');
     if (gFrame === 0) return
     const { lines } = gMeme
     lines.forEach(line => {
@@ -50,15 +46,17 @@ function onShowLines() {
         gCtx.fillStyle = color
         gCtx.font = size + gQueryOptions.font
         gCtx.fillText(txt, location.x, location.y)
-        console.log('location.x, location.y', location.x, location.y);
-
+        console.log('location.x, location.y', location.x, location.y)
     })
-
-    // console.log('location.x, location.y', location.x, location.y);
 }
 
 
 function onAddDemoText(txt, size, color) {
+
+    if (gDeteleLine) {
+        gDeteleLine = false
+        return
+    }
     console.log('hitext');
     var { lines } = gMeme
     var txt = lines[gCuurLineIdx].txt
@@ -77,8 +75,8 @@ function onAddDemoText(txt, size, color) {
     var y = space
     gCtx.strokeText(txt, x, y)
     gCtx.fillText(txt, x, y)
-    gMeme.lines[gCuurLineIdx].location.x = x
-    gMeme.lines[gCuurLineIdx].location.y = y
+    location.x = x
+    location.y = y
     console.log('x, y', x, y);
     onAddFrame(txt)
 }
@@ -88,35 +86,18 @@ function checkOnCanvas(ev) {
     const { offsetX, offsetY, clientX, clientY } = ev
     console.log(ev);
     const { lines } = gMeme
-    // console.log(lines);
-    // var [{ location }] = lines
-    // var { x, y, w, h } = location
-    // console.log(lines[0].location)
-    // var rate = w * h
-    console.log(gMeme.lines[gCuurLineIdx].location.x);
-
-    // (x - padding, y - padding, textWidth + 2 * padding, size + 2 * padding)
-
-
-    var line = lines.find(line => {
+    var line = lines.findIndex(line => {
         var { location } = line
-        // var { x, y, w, h } = location
-        // var rate = w * h
-        //  [{ location }] = lines
-        var padding = 10
-        console.log(line);
-        console.log(lines[gCuurLineIdx].location.x)
 
+        var padding = 10
         console.log(location.x, location.y, location.w, location.h);
         console.log(offsetX, offsetY, clientX, clientY);
-        return (offsetX >= location.x - padding && offsetX <= location.x + location.w + 2 * padding &&
+        return (offsetX >= location.x + padding && offsetX <= location.x + location.w &&
             offsetY >= location.y + padding && offsetY <= location.h)
-        // return (offsetX >= x && offsetX <= x + w &&
-        //         offsetY >= y && offsetY <= y + rate)
     })
 
-    if (line) {
-        console.log('cocojknlsknblkfml');
+    if (line === 1) {
+        gCuurLineIdx = line
     }
 
 }
@@ -124,13 +105,11 @@ function checkOnCanvas(ev) {
 
 
 function onAddFrame(text) {
-    console.log('hi frame');
     var { lines } = gMeme
     var [{ size }] = lines
     console.log('size', size);
     if (!gFrame === gMeme.selectedLineIdx) return
     if (gCurrFrame)
-        console.log('baymi');
     var cuurSpace = 60
     var space = gCuurLineIdx * cuurSpace
     gCtx.font = size + gQueryOptions.font
@@ -142,14 +121,6 @@ function onAddFrame(text) {
     gCtx.strokeStyle = 'black'
     // gCtx.fillText(text, x, y)
     gCtx.strokeRect(x - padding, y - padding, textWidth + 2 * padding, size + 2 * padding)
-    console.log(x - padding, y - padding, textWidth + 2 * padding, 40);
-    // gMeme.lines[gCuurLineIdx].location.x = x-padding
-    // gMeme.lines[gCuurLineIdx].location.y = y-padding
-    // // onShowLines()
-    // renderMeme()
-    // onAddLocation()
-    // lines[gCuurLineIdx].location = { x: x - padding, y: y - padding, w: textWidth + 2 * padding, h: size + 2 * padding }
-
 }
 
 console.log();
@@ -157,8 +128,7 @@ console.log();
 function onAddLocation(text) {
     var { lines } = gMeme
     var [{ size }] = lines
-    // lines[gCuurLineIdx].location = { x, y, z, v }
-    //     console.log( lines[gCuurLineIdx].location );
+ 
     var cuurSpace = 40
     var space = gCuurLineIdx * cuurSpace
     const textWidth = gCtx.measureText(text).width
@@ -174,16 +144,10 @@ function onAddLocation(text) {
 
 
 function onSetLineTxt() {
-    console.log('set-text');
-
-    gCurrLine = true
     const text = document.querySelector('[name="txt-meme"]').value
 
     setLineTxt(text)
-
     onAddFrame(text)
-    console.log(text);
-    // onAddLocation(text)
     renderMeme()
 }
 
@@ -245,15 +209,12 @@ function onAddLines() {
     }
     var { txt, size, color, location } = line
     lines.push(line)
-    console.log(lines);
     gFrame++
     gMeme.selectedLineIdx++
     document.querySelector('[name="txt-meme"]').value = ''
 
     onAddFrame(line.txt)
     onAddDemoText(txt, size, color, location)
-    // onAddFrame(line.txt)
-    // renderMeme()
 }
 
 
@@ -273,6 +234,7 @@ function onAlignText(elAlign) {
 
 
 function onDeleteLine() {
+    gDeteleLine = true
     gCuurLineIdx
     var { lines } = gMeme
     lines.splice(gCuurLineIdx, 1)
@@ -280,20 +242,7 @@ function onDeleteLine() {
 }
 
 
-// gCtx.lineWidth = 2
-// gCtx.strokeRect(45, 20, 200, 45)
-
-// var mouseX = ev.clientX - canvas.getBoundingClientRect().left
-// var mouseY = ev.clientY - canvas.getBoundingClientRect().top
-
-// console.log(mouseX, mouseY);
-
-// // עדכון מיקום הטקסט בהתאם למיקום של העכבר
-// textElement.style.left = mouseX + 'px';
-// textElement.style.top = mouseY + 'px';
-// // }
-
-function onSave() { 
+function onSave() {
     gMemes.push(gMeme)
 
     const dataURL = gElCanvas.toDataURL()
